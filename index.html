@@ -19,7 +19,6 @@
 </head>
 
 <body>
-
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container">
@@ -51,10 +50,36 @@
                 </div>
             </div>
         </nav>
-            <div class="d-flex align-items-center ms-3">
-            <img src="img/profile.jpg" alt="Perfil" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
-            <span class="ms-2 fw-medium text-dark">ver perfil</span>
-            </div> 
+
+<!-- Icono del carrito en el header -->
+<div class="header">
+    <button id="abrir-carrito" class="carrito-icono">
+        🛒 <span class="badge">0</span>
+    </button>
+</div>
+
+<!-- Carrito desplegable lateral -->
+<div id="carrito-lateral" class="carrito-lateral">
+    <div class="carrito-header">
+        <h5>Carrito de compras</h5>
+        <button id="cerrar-carrito" class="btn-cerrar">✖</button>
+    </div>
+    <div id="carrito-contenedor" class="carrito-contenido">
+        <!-- Aquí se mostrarán los productos -->
+    </div>
+    <div class="carrito-footer">
+        <h6>Total: $<span id="carrito-total">0</span></h6>
+        <div class="d-flex justify-content-between mt-3">
+            <button id="vaciar-carrito" class="btn btn-warning">Vaciar Carrito</button>
+            <button id="comprar-carrito" class="btn btn-success">Comprar</button>
+        </div>
+    </div>
+    
+</div>
+
+<!-- Fondo oscuro al abrir el carrito -->
+<div id="overlay" class="overlay"></div>
+
     </header>
 
     <!-- Encabezado de la página -->
@@ -106,8 +131,8 @@
 
                 <!-- Caja 4 -->
                 <div class="cajas caja4">
-                    <img src="img/frutos.png" alt="nuts">
-                    <h3>Frutos Secos</h3>
+                    <img src="img/pollo.png" alt="nuts">
+                    <h3>Carnes</h3>
                     <span>22 Items &rarr;</span>
                 </div>
 
@@ -126,137 +151,27 @@
             <div class="heading">
                 <h2>Lo más Popular <br><span>Productos</span></h2>
                 <a href="#" class="botonC">Ver todo <i class='bx bx-right-arrow-alt'></i></a>
-            </div>
-
+            </div>    
             <!-- Contenido de productos -->
-
-            <div class="productos-contenedor">
-
-                <!-- caja 1    -->
-                <div class="cajaa">
-                    <img src="img/durazno.png" alt="">
-                    <span>Fresh Item</span>
-                    <h3>Fruta organica fresca<br>fruta 250gr</h3>
-                    <h4 class="precio">$325 <span>/kg</span></h4>
-                    <i class='bx bx-cart-alt'></i>
-                    <i class='bx bx-heart'></i>
-                    <span class="descuento">-25%</span>
-                </div>
-
-                <!-- caja 2    -->
-                <div class="cajaa">
-                    <img src="img/picante.png" alt="">
-                    <span>Fresh Item</span>
-                    <h3>Orgánico de Granja<br>Pollo 500gr</h3>
-                    <h4 class="precio">$1150 <span>/kg</span></h4>
-                    <i class='bx bx-cart-alt'></i>
-                    <i class='bx bx-heart'></i>
-                    <span class="descuento">-25%</span>
-                </div>
-
-                <!-- caja 3    -->
-                <div class="cajaa">
-                    <img src="img/mixed-nuts.jpg" alt="">
-                    <span>Fresh Item</span>
-                    <h3>Mix Frutos Secos<br>fruto 250gr</h3>
-                    <h4 class="precio">$750 <span>/kg</span></h4>
-                    <i class='bx bx-cart-alt'></i>
-                    <i class='bx bx-heart'></i>
-                    <span class="descuento">-25%</span>
-                </div>
-
-                <!-- caja 4    -->
-                <div class="cajaa">
-                    <img src="img/raw-salmon.jpg" alt="">
-                    <span>Fresh Item</span>
-                    <h3>Filete de Salmon<br>Fresco 250gr</h3>
-                    <h4 class="precio">$1550 <span>/kg</span></h4>
-                    <i class='bx bx-cart-alt'></i>
-                    <i class='bx bx-heart'></i>
-                    <span class="descuento">-25%</span>
-                </div>
-
-                <!-- caja 5    -->
-                <div class="cajaa">
-                    <img src="img/3d67c160-2eb3-460a-af05-798fff330dcc-fotor-bg-remover-20241115195535.png" alt="">
-                    <span>Fresh Item</span>
-                    <h3>Smoothie Verde Detox<br>Bebida 500ml</h3>
-                    <h4 class="precio">$150 <span>/kg</span></h4>
-                    <i class='bx bx-cart-alt'></i>
-                    <i class='bx bx-heart'></i>
-                    <span class="descuento">-25%</span>
-                </div>
-
-                <!-- caja 6    -->
-                <div class="cajaa">
-                    <img src="img/vegetales.png" alt="">
-                    <span>Fresh Item</span>
-                    <h3>Vegetales Organicos<br>Frescos 500gr</h3>
-                    <h4 class="precio">$650 <span>/kg</span></h4>
-                    <i class='bx bx-cart-alt'></i>
-                    <i class='bx bx-heart'></i>
-                    <span class="descuento">-25%</span>
-                </div>
-            </div>
+<br>
+<br>
+            <section class="productos-dinamicos" id="productos-dinamicos">
+                <h2>Lista de Productos Disponibles</h2>
+                <ul id="lista-productos"></ul>
+            </section>
+            <div class="productos-contenedor"></div>
     </section>
 
     <!-- Reseñas -->
+
     <section class="reseñas" id="reseñas">
         <h2>¿Por Qué Nuestros Clientes Nos Aman?</h2>
         <div class="reseñas-contenedor">
-            <!-- Reseña 1 -->
-            <div class="caja">
-                <i class='bx bxs-quote-alt-left'></i>
-                <div class="estrellas">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                </div>
-                <p>La calidad de los productos es excelente, siempre frescos y con un sabor increíble. ¡Recomendado!</p>
-                <div class="review-profile">
-                    <img src="img/chica1.jpg" alt="">
-                    <h3>Sandra Sanchez</h3>
-                </div>
-            </div>
-
-            <!-- Reseña 2 -->
-            <div class="caja">
-                <i class='bx bxs-quote-alt-left'></i>
-                <div class="estrellas">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                </div>
-                <p>¡Increíble servicio! La atención al cliente fue muy amable y rápida. Definitivamente volveré a comprar.</p>
-                <div class="review-profile">
-                    <img src="img/chico3.jpg" alt="">
-                    <h3>Enzo Cabral</h3>
-                </div>
-            </div>
-
-            <!-- Reseña 3 -->
-            <div class="caja">
-                <i class='bx bxs-quote-alt-left'></i>
-                <div class="estrellas">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                </div>
-                <p>Me encanta la variedad de opciones saludables. Es perfecto para quienes buscan comer mejor.</p>
-                <div class="review-profile">
-                    <img src="img/chica2.jpg" alt="">
-                    <h3>Sofía Maciel</h3>
-                </div>
-            </div>
+            <!-- Nuevas reseñas dinámicas -->
+            <div id="api-dynamic-reviews"></div>
         </div>
-    </section> 
-
+    </section>
+    
 
             <!-- Formulario de contacto -->
     <section id="contacto">
@@ -265,15 +180,15 @@
             <form action="https://formspree.io/f/xnnqjjyo" method="post" class="formulario">
                 <div class="form-grupo">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" required>
+                    <input type="text" id="nombre" name="nombre" >
                 </div>
                 <div class="form-grupo">
-                    <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" >
                 </div>
                 <div class="form-grupo">
                     <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                    <textarea id="mensaje" name="mensaje" rows="4" ></textarea>
                 </div>
                 <button type="submit" class="boton-enviar">Enviar Mensaje</button>
             </form>
@@ -327,6 +242,9 @@
         <!-- Copyright -->
 
     <div class="copyright"><p>&#169; Catalina Todos Los Derechos Reservados.</p></div>
+    
+    <script src="documentos/script.js"></script>
+
 
 </body>
 
