@@ -216,7 +216,7 @@ function actualizarCarrito() {
     guardarCarrito();
 }
 
-// 👉 Agregar producto al carrito
+//  Agregar producto al carrito
 function agregarAlCarrito(event) {
     const boton = event.target;
     const id = boton.getAttribute('data-id');
@@ -243,7 +243,7 @@ function cambiarCantidad(id, cantidad) {
     }
 }
 
-// 👉 Eliminar producto (uno por uno)
+//  Eliminar producto (uno por uno)
 function eliminarProducto(id) {
     const producto = carrito.find(item => item.id === id);
     if (producto) {
@@ -256,18 +256,18 @@ function eliminarProducto(id) {
     }
 }
 
-// 👉 Vaciar carrito
+//  Vaciar carrito
 vaciarCarritoBtn.addEventListener('click', () => {
     carrito = [];
     actualizarCarrito();
 });
 
-// 👉 Guardar en localStorage
+//  Guardar en localStorage
 function guardarCarrito() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-// 👉 Listeners para agregar al carrito
+//  Listeners para agregar al carrito
 document.querySelectorAll('.agregar-carrito').forEach(boton => {
     boton.addEventListener('click', agregarAlCarrito);
 });
